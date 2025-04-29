@@ -1,0 +1,135 @@
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.BrokenBarrierException;
+
+public class SyncBenchmark {
+
+    private static final int THREADS = 5000;
+
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("Start benchmark...\n");
+
+        countDownLatch();
+        cyclicBarrier();
+        busyWaiting();
+    }
+
+    private static void countDownLatch() throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(THREADS);
+
+        ThreadMXBean bean = ManagementFactory.getThreadMXBean();
+        if (bean.isThreadCpuTimeSupported() && !bean.isThreadCpuTimeEnabled()) {
+            bean.setThreadCpuTimeEnabled(true);
+        }
+
+        long cpuStart = bean.getCurrentThreadCpuTime();
+        long start = System.nanoTime();
+
+        for (int i = 0; i < THREADS; i++) {
+            new Thread(() -> {
+                heavyComputation();
+                latch.countDown();
+            }).start();
+        }
+
+        while (latch.getCount() > 0) {
+            Thread.yield();
+        }
+
+        long end = System.nanoTime();
+        long cpuEnd = bean.getCurrentThreadCpuTime();
+
+        System.out.println("CountDownLatch - czas rzeczywisty: " + (end - start) / 1_000_000 + " ms");
+        System.out.println("CountDownLatch - czas CPU        : " + (cpuEnd - cpuStart) / 1_000_000 + " ms\n");
+    }
+
+    private static void cyclicBarrier() throws InterruptedException {
+        CyclicBarrier barrier = new CyclicBarrier(THREADS + 1);
+
+        ThreadMXBean bean = ManagementFactory.getThreadMXBean();
+        if (bean.isThreadCpuTimeSupported() && !bean.isThreadCpuTimeEnabled()) {
+            bean.setThreadCpuTimeEnabled(true);
+        }
+
+        long cpuStart = bean.getCurrentThreadCpuTime();
+        long start = System.nanoTime();
+
+        for (int i = 0; i < THREADS; i++) {
+            new Thread(() -> {
+                heavyComputation();
+                try {
+                    barrier.await();
+                } catch (InterruptedException | BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+
+        while (barrier.getNumberWaiting() < THREADS) {
+            Thread.yield();
+        }
+
+        try {
+            barrier.await();
+        } catch (BrokenBarrierException e) {
+            e.printStackTrace();
+        }
+
+        long end = System.nanoTime();
+        long cpuEnd = bean.getCurrentThreadCpuTime();
+
+        System.out.println("CyclicBarrier - czas rzeczywisty: " + (end - start) / 1_000_000 + " ms");
+        System.out.println("CyclicBarrier - czas CPU        : " + (cpuEnd - cpuStart) / 1_000_000 + " ms\n");
+    }
+
+    private static boolean allDone(boolean[] done) {
+        for (boolean b : done) {
+            if (!b) return false;
+        }
+        return true;
+    }
+
+    private static void busyWaiting() {
+        final boolean[] done = new boolean[THREADS];
+
+        ThreadMXBean bean = ManagementFactory.getThreadMXBean();
+        if (bean.isThreadCpuTimeSupported() && !bean.isThreadCpuTimeEnabled()) {
+            bean.setThreadCpuTimeEnabled(true);
+        }
+
+        long cpuStart = bean.getCurrentThreadCpuTime();
+        long start = System.nanoTime();
+
+        for (int i = 0; i < THREADS; i++) {
+            final int index = i;
+            new Thread(() -> {
+                heavyComputation();
+                done[index] = true;
+            }).start();
+        }
+
+        while (!allDone(done)) {
+            Thread.yield();
+        }
+
+        long end = System.nanoTime();
+        long cpuEnd = bean.getCurrentThreadCpuTime();
+
+        System.out.println("Busy waiting - czas rzeczywisty: " + (end - start) / 1_000_000 + " ms");
+        System.out.println("Busy waiting - czas CPU        : " + (cpuEnd - cpuStart) / 1_000_000 + " ms\n");
+    }
+
+    private static void heavyComputation() {
+        double result = 0;
+        for (int i = 0; i < 1_000_000; i++) {
+            result += Math.sin(i) * Math.cos(i) * Math.sqrt(i);
+        }
+
+        if (result == 42) {
+            System.out.println();
+        }
+    }
+}

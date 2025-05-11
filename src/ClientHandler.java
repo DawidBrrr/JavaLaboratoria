@@ -37,7 +37,6 @@ public class ClientHandler implements Runnable {
                 String answer = in.readLine();
                 if (isEndMessage(answer)) {
                     sendMessage(out,"Kończysz test na żądanie !");
-                    saveAnswerToFile();
                     sendMessage(out,printAnswer());
                     sendMessage(out, "Kończę połączenie");
                     break;
@@ -46,18 +45,20 @@ public class ClientHandler implements Runnable {
                 clientAnswerMap.put(currentQuestionIndex, answer.trim());
                 currentQuestionIndex++;
             }
-
-            saveAnswerToFile();
-
-        } catch (   IOException e) {
+        } catch (IOException e) {
             System.err.println("⚠️ Błąd w obsłudze klienta: " + e.getMessage());
         } finally {
+            saveAnswerToFile();
             close();
         }
     }
 
-    private void saveAnswerToFile() throws IOException {
-         FileUtil.addAnswerToFile("id : "+id+ "Odpowiedzi : "+ clientAnswerMap.toString());
+    private void saveAnswerToFile(){
+        try {
+            FileUtil.addAnswerToFile("id : "+id+ " ; Odpowiedzi : "+ clientAnswerMap.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void sendMessage(BufferedWriter out, String message) throws IOException {

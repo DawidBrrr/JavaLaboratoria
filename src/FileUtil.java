@@ -11,7 +11,8 @@ public class FileUtil {
     private static final Path questionsFilePath = Path.of("src/data/questions.txt");
     private static final Path clientDB = Path.of("src/data/client_answer.txt");
     private static final Path idFilePath = Path.of("src/data/id.txt");
-    private static final Lock fileLock = new ReentrantLock();
+    private static final Lock clientsFileLock = new ReentrantLock();
+    private static final Lock idsFileLock = new ReentrantLock();
 
     public static String loadFromFile(Path path) throws IOException {
         return Files.readString(path);
@@ -24,7 +25,7 @@ public class FileUtil {
     public static void addAnswerToFile(String answer) throws IOException {
         String cleanAnswer = answer.strip();
 
-        fileLock.lock();
+        clientsFileLock.lock();
         try (BufferedWriter writer = Files.newBufferedWriter(
                 clientDB,
                 StandardOpenOption.CREATE,
@@ -34,11 +35,11 @@ public class FileUtil {
             writer.write(cleanAnswer);
             writer.newLine();
         } finally {
-            fileLock.unlock();
+            clientsFileLock.unlock();
         }
     }
     public static int getNextID() throws IOException {
-    fileLock.lock();
+    idsFileLock.lock();
     try {
         int currentId = 0;
 
@@ -62,7 +63,7 @@ public class FileUtil {
 
         return currentId;
     } finally {
-        fileLock.unlock();
+        idsFileLock.unlock();
     }
 }
 

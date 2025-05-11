@@ -132,3 +132,7 @@ id : 543Odpowiedzi : {1=sds, 2=wer, 3=tyujert, 4=erty, 5=wert, 6=fghj, 7=23qe, 8
 id : 544Odpowiedzi : {1=ewre, 2=fgdfgdf, 3=er, 4=erwer, 5=fgertgerter}
 id : 545Odpowiedzi : {1=gdfgdf, 2=ertert, 3=gdfgdfg}
 id : 545Odpowiedzi : {1=gdfgdf, 2=ertert, 3=gdfgdfg}
+id : 548Odpowiedzi : {1=, 2=a, 3=tyt, 4=yt}
+id : 548Odpowiedzi : {1=, 2=a, 3=tyt, 4=yt}
+id : 552Odpowiedzi : {1=hfghfghfghfghfghfghgfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, 2=new, 3=dfsd, 4=return, 5=void}
+id : 554 ; Odpowiedzi : {1=extends, 2=new, 3=implements, 4=void, 5=break, 6=catch, 7=throw, 8=final, 9=, 10=Runnable, 11=synchronized, 12=main, 13=char, 14=boolean, 15=if, 16=switch, 17=public, 18=static, 19=class, 20=return}

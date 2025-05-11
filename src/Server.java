@@ -22,7 +22,7 @@ public class Server {
                     System.out.println("🟢 Połączenie od: " + clientSocket.getInetAddress());
 
                     // Obsłuż klienta
-                    clientPool.execute(new ClientHandler(clientSocket));
+                    clientPool.execute(new ClientHandler(clientSocket, FileUtil.getNextID()));
 
                 } catch (IOException e) {
                     System.err.println("❌ Błąd przy akceptacji połączenia: " + e.getMessage());

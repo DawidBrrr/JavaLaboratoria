@@ -7,9 +7,11 @@ public class ClientHandler implements Runnable {
     private final Socket socket;
     private int currentQuestionIndex = 1;
     private final Map<Integer, String> clientAnswerMap = new HashMap<>();
+    private final int id;
 
-    public ClientHandler(Socket socket) {
+    public ClientHandler(Socket socket, int id) {
         this.socket = socket;
+        this.id = id;
     }
 
     @Override
@@ -18,12 +20,15 @@ public class ClientHandler implements Runnable {
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))
         ) {
-            sendMessage(out, "📢 Test startuje. Wpisz 'end' aby zakończyć.");
+            sendMessage(out, "Witamy , Twoje id to : " + id);
+            sendMessage(out, "📢 Rozpoczynasz Test");
 
             while (true) {
                 Question question = QuestionHandler.getInstance().getQuestion(currentQuestionIndex);
                 if (question == null) {
-                    sendMessage(out, "✅ Koniec pytań. Dzięki za udział!");
+                    sendMessage(out, "Dzięki za udział! Twoje odpowiedzi dla id :" + id);
+                    sendMessage(out,printAnswer());
+                    sendMessage(out,"Kończę połączenie");
                     break;
                 }
 
@@ -31,7 +36,10 @@ public class ClientHandler implements Runnable {
 
                 String answer = in.readLine();
                 if (isEndMessage(answer)) {
-                    sendMessage(out, "🛑 Zakończono test. Zapisuję odpowiedzi.");
+                    sendMessage(out,"Kończysz test na żądanie !");
+                    saveAnswerToFile();
+                    sendMessage(out,printAnswer());
+                    sendMessage(out, "Kończę połączenie");
                     break;
                 }
 
@@ -46,6 +54,10 @@ public class ClientHandler implements Runnable {
         } finally {
             close();
         }
+    }
+
+    private void saveAnswerToFile() throws IOException {
+         FileUtil.addAnswerToFile("id : "+id+ "Odpowiedzi : "+ clientAnswerMap.toString());
     }
 
     private void sendMessage(BufferedWriter out, String message) throws IOException {
@@ -64,11 +76,12 @@ public class ClientHandler implements Runnable {
         return input == null || input.equalsIgnoreCase("end");
     }
 
-    private void saveAnswerToFile() throws IOException {
+    private String printAnswer() throws IOException {
         StringBuilder result = new StringBuilder();
         clientAnswerMap.forEach((key, value) -> result.append("Pytanie ").append(key).append(": ").append(value).append("\n"));
-        FileUtil.addAnswerToFile(result.toString());
+        return result.toString();
     }
+
 
     private void close() {
         try {

@@ -1,23 +1,134 @@
-{}
-{0=A, 1=c, 2=a, 3=a, 4=a, 5=a, 6=a, 7=a, 8=a, 9=a, 10=a, 11=a, 12=a, 13=a, 14=a, 15=a, 16=a, 17=a, 18=a, 19=a}
-{}
-Pytanie 1: extends
-Pytanie 2: new
-Pytanie 3: d
-Pytanie 4: void
-Pytanie 5: 
-Pytanie 6: a
-Pytanie 7: a
-Pytanie 8: a
-Pytanie 9: a
-Pytanie 10: a
-Pytanie 11: a
-Pytanie 12: a
-Pytanie 13: 
-Pytanie 14: a
-Pytanie 15: a
-Pytanie 16: a
-Pytanie 17: a
-Pytanie 18: a
-Pytanie 19: 
-Pytanie 20: a
+250id : 9Odpowiedzi : {}
+id : 41Odpowiedzi : {}
+id : 13Odpowiedzi : {}
+id : 100Odpowiedzi : {}
+id : 87Odpowiedzi : {}
+id : 23Odpowiedzi : {}
+id : 60Odpowiedzi : {}
+id : 65Odpowiedzi : {}
+id : 54Odpowiedzi : {}
+id : 104Odpowiedzi : {}
+id : 43Odpowiedzi : {}
+id : 68Odpowiedzi : {}
+id : 31Odpowiedzi : {}
+id : 17Odpowiedzi : {}
+id : 111Odpowiedzi : {}
+id : 26Odpowiedzi : {}
+id : 51Odpowiedzi : {}
+id : 18Odpowiedzi : {}
+id : 42Odpowiedzi : {}
+id : 77Odpowiedzi : {}
+id : 86Odpowiedzi : {}
+id : 37Odpowiedzi : {}
+id : 59Odpowiedzi : {}
+id : 52Odpowiedzi : {}
+id : 38Odpowiedzi : {}
+id : 47Odpowiedzi : {}
+id : 63Odpowiedzi : {}
+id : 58Odpowiedzi : {}
+id : 103Odpowiedzi : {}
+id : 33Odpowiedzi : {}
+id : 115Odpowiedzi : {}
+id : 45Odpowiedzi : {}
+id : 120Odpowiedzi : {}
+id : 131Odpowiedzi : {}
+id : 136Odpowiedzi : {}
+id : 147Odpowiedzi : {}
+id : 152Odpowiedzi : {}
+id : 157Odpowiedzi : {}
+id : 161Odpowiedzi : {}
+id : 163Odpowiedzi : {}
+id : 168Odpowiedzi : {}
+id : 172Odpowiedzi : {}
+id : 173Odpowiedzi : {}
+id : 176Odpowiedzi : {}
+id : 179Odpowiedzi : {}
+id : 178Odpowiedzi : {}
+id : 177Odpowiedzi : {}
+id : 184Odpowiedzi : {}
+id : 190Odpowiedzi : {}
+id : 192Odpowiedzi : {}
+id : 191Odpowiedzi : {}
+id : 200Odpowiedzi : {}
+id : 204Odpowiedzi : {}
+id : 203Odpowiedzi : {}
+id : 207Odpowiedzi : {}
+id : 215Odpowiedzi : {}
+id : 224Odpowiedzi : {}
+id : 227Odpowiedzi : {}
+id : 229Odpowiedzi : {}
+id : 233Odpowiedzi : {}
+id : 239Odpowiedzi : {}
+id : 243Odpowiedzi : {}
+id : 247Odpowiedzi : {}
+id : 244Odpowiedzi : {}
+id : 245Odpowiedzi : {}
+id : 19Odpowiedzi : {}
+id : 308Odpowiedzi : {}
+id : 315Odpowiedzi : {}
+id : 317Odpowiedzi : {}
+id : 327Odpowiedzi : {}
+id : 363Odpowiedzi : {}
+id : 361Odpowiedzi : {}
+id : 304Odpowiedzi : {}
+id : 295Odpowiedzi : {}
+id : 529Odpowiedzi : {}
+id : 318Odpowiedzi : {}
+id : 275Odpowiedzi : {}
+id : 282Odpowiedzi : {}
+id : 341Odpowiedzi : {}
+id : 321Odpowiedzi : {}
+id : 359Odpowiedzi : {}
+id : 272Odpowiedzi : {}
+id : 303Odpowiedzi : {}
+id : 287Odpowiedzi : {}
+id : 311Odpowiedzi : {}
+id : 298Odpowiedzi : {}
+id : 351Odpowiedzi : {}
+id : 284Odpowiedzi : {}
+id : 288Odpowiedzi : {}
+id : 348Odpowiedzi : {}
+id : 307Odpowiedzi : {}
+id : 309Odpowiedzi : {}
+id : 292Odpowiedzi : {}
+id : 349Odpowiedzi : {}
+id : 354Odpowiedzi : {}
+id : 367Odpowiedzi : {}
+id : 383Odpowiedzi : {}
+id : 365Odpowiedzi : {}
+id : 371Odpowiedzi : {}
+id : 395Odpowiedzi : {}
+id : 398Odpowiedzi : {}
+id : 403Odpowiedzi : {}
+id : 402Odpowiedzi : {}
+id : 411Odpowiedzi : {}
+id : 410Odpowiedzi : {}
+id : 413Odpowiedzi : {}
+id : 422Odpowiedzi : {}
+id : 425Odpowiedzi : {}
+id : 435Odpowiedzi : {}
+id : 434Odpowiedzi : {}
+id : 438Odpowiedzi : {}
+id : 446Odpowiedzi : {}
+id : 447Odpowiedzi : {}
+id : 451Odpowiedzi : {}
+id : 450Odpowiedzi : {}
+id : 457Odpowiedzi : {}
+id : 456Odpowiedzi : {}
+id : 461Odpowiedzi : {}
+id : 463Odpowiedzi : {}
+id : 478Odpowiedzi : {}
+id : 480Odpowiedzi : {}
+id : 482Odpowiedzi : {}
+id : 491Odpowiedzi : {}
+id : 493Odpowiedzi : {}
+id : 495Odpowiedzi : {}
+id : 498Odpowiedzi : {}
+id : 506Odpowiedzi : {}
+id : 519Odpowiedzi : {}
+id : 541Odpowiedzi : {1=sdf, 2=, 3=fsd, 4=f, 5=sdf, 6=, 7=sdf, 8=sdf, 9=df, 10=sdf, 11=sd, 12=fds, 13=fsd, 14=fsd, 15=f, 16=sdf, 17=d, 18=fsd, 19=fsd, 20=fsd}
+id : 542Odpowiedzi : {1=s, 2=sfsd, 3=fsdfsd, 4=return, 5=break, 6=catch, 7=throw, 8=const, 9=feffgr, 10=erter, 11=, 12=hseds, 13=ertert, 14=terter, 15=gdfgf, 16=tert, 17=yyury, 18=wer, 19=tert, 20=terter}
+id : 543Odpowiedzi : {1=sds, 2=wer, 3=tyujert, 4=erty, 5=wert, 6=fghj, 7=23qe, 8=564, 9=312, 10=rtyh, 11=qwer, 12=erth, 13=sdfgh, 14=rtyj, 15=qet, 16=dfghnmj, 17=wrh6, 18=tuokl, 19=sfvb, 20=ryjk}
+id : 544Odpowiedzi : {1=ewre, 2=fgdfgdf, 3=er, 4=erwer, 5=fgertgerter}
+id : 545Odpowiedzi : {1=gdfgdf, 2=ertert, 3=gdfgdfg}
+id : 545Odpowiedzi : {1=gdfgdf, 2=ertert, 3=gdfgdfg}

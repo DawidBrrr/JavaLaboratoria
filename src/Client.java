@@ -23,16 +23,11 @@ public class Client {
             while ((line = in.readLine()) != null) {
                 String fullMessage = readFullBlock(in, line);
                 System.out.println(fullMessage);
-
                 if (isEndMessage(fullMessage)) break;
 
                 if (isQuestionBlock(fullMessage)) {
-                    System.out.println("RODP");
                     String answer = readUserAnswer(scanner);
                     sendAnswer(out, answer);
-                    System.out.println("WODP");
-
-                    if (answer.equalsIgnoreCase("end")) break;
                 }
             }
 
@@ -54,7 +49,7 @@ public class Client {
     }
 
     private boolean isQuestionBlock(String message) {
-        return message.contains("Pytanie");
+        return message.contains("?");
     }
 
     private String readUserAnswer(Scanner scanner) {
@@ -76,6 +71,6 @@ public class Client {
     }
 
     private boolean isEndMessage(String msg) {
-        return msg.contains("Koniec pytań") || msg.contains("Zakończono test");
+        return msg.contains("Kończę połączenie") || msg.contains("Zakończono test");
     }
 }

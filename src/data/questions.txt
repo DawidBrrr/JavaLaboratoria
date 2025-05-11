@@ -1,0 +1,139 @@
+Jakie słowo kluczowe służy do dziedziczenia klasy?
+A) implements
+B) inherits
+C) extends
+D) override
+{C}
+
+Jakie słowo kluczowe służy do utworzenia nowego obiektu?
+A) new
+B) create
+C) object
+D) init
+{A}
+
+Jakie słowo kluczowe służy do implementacji interfejsu?
+A) import
+B) interface
+C) extend
+D) implements
+{D}
+
+Jakie słowo kluczowe oznacza, że metoda nie zwraca wartości?
+A) empty
+B) void
+C) return
+D) null
+{B}
+
+Jakie słowo kluczowe służy do zakończenia działania pętli?
+A) stop
+B) exit
+C) break
+D) return
+{C}
+
+Jakie słowo kluczowe służy do obsługi wyjątków?
+A) handle
+B) except
+C) catch
+D) throw
+{C}
+
+Jakie słowo kluczowe służy do zgłoszenia wyjątku?
+A) catch
+B) raise
+C) throws
+D) throw
+{D}
+
+Jakie słowo kluczowe zarezerwuje wartość jako stałą?
+A) const
+B) fixed
+C) final
+D) static
+{C}
+
+Jakie słowo kluczowe definiuje klasę abstrakcyjną?
+A) base
+B) virtual
+C) abstract
+D) interface
+{C}
+
+Jak nazywa się interfejs używany do tworzenia wątków?
+A) Runnable
+B) Threadable
+C) Executor
+D) Multithread
+{A}
+
+Jakie słowo kluczowe służy do synchronizacji wątków?
+A) lock
+B) sync
+C) synchronized
+D) threadsafe
+{C}
+
+Jak nazywa się domyślna metoda startowa w Javie?
+A) start
+B) launch
+C) main
+D) init
+{C}
+
+Jaki typ zmiennej przechowuje pojedynczy znak?
+A) string
+B) char
+C) letter
+D) text
+{B}
+
+Jak nazywa się typ logiczny w Javie?
+A) logic
+B) bool
+C) boolean
+D) bit
+{C}
+
+Jakie słowo kluczowe sprawdza warunek logiczny?
+A) case
+B) condition
+C) if
+D) test
+{C}
+
+Jakie słowo kluczowe służy do wielu opcji wyboru?
+A) choose
+B) switch
+C) select
+D) caseof
+{B}
+
+Jakie słowo kluczowe oznacza klasę dostępną globalnie?
+A) static
+B) final
+C) global
+D) public
+{D}
+
+Jakie słowo kluczowe wskazuje, że coś należy do klasy, a nie obiektu?
+A) global
+B) static
+C) final
+D) const
+{B}
+
+Jakie słowo kluczowe tworzy anonimową klasę wewnętrzną?
+A) class
+B) new
+C) extends
+D) this
+{B}
+
+Jakie słowo kluczowe natychmiast kończy metodę?
+A) exit
+B) stop
+C) return
+D) end
+{C}

@@ -1,0 +1,23 @@
+{}
+{0=A, 1=c, 2=a, 3=a, 4=a, 5=a, 6=a, 7=a, 8=a, 9=a, 10=a, 11=a, 12=a, 13=a, 14=a, 15=a, 16=a, 17=a, 18=a, 19=a}
+{}
+Pytanie 1: extends
+Pytanie 2: new
+Pytanie 3: d
+Pytanie 4: void
+Pytanie 5: 
+Pytanie 6: a
+Pytanie 7: a
+Pytanie 8: a
+Pytanie 9: a
+Pytanie 10: a
+Pytanie 11: a
+Pytanie 12: a
+Pytanie 13: 
+Pytanie 14: a
+Pytanie 15: a
+Pytanie 16: a
+Pytanie 17: a
+Pytanie 18: a
+Pytanie 19: 
+Pytanie 20: a

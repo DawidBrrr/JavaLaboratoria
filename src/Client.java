@@ -53,15 +53,21 @@ public class Client {
     }
 
     private String readUserAnswer(Scanner scanner) {
-        System.out.print("Twoja odpowiedź: ");
         long start = System.currentTimeMillis();
-        String answer = scanner.nextLine().trim();
-        long duration = System.currentTimeMillis() - start;
+        String answer;
+        do {
+            System.out.print("Twoja odpowiedź: ");
+            answer = scanner.nextLine().trim().toUpperCase();
+            long duration = System.currentTimeMillis() - start;
 
-        if (duration > 30000) {
-            System.out.println("⏱️ Przekroczono limit czasu 30s. Brak odpowiedzi.");
-            return "";
-        }
+            if (duration > 30000) {
+                System.out.println("⏱️ Przekroczono limit czasu 30s. Brak odpowiedzi.");
+                return "";
+            }
+            if (!answer.matches("[ABCD]")) {
+                System.out.println("❌ Nieprawidłowy format wpisz A,B,C lub D.");
+            }
+        }while(!answer.matches("[ABCD]"));
         return answer;
     }
 

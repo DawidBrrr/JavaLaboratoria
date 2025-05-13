@@ -59,6 +59,7 @@ public class ClientHandler implements Runnable {
     private void saveAnswerToFile(){
         try {
             FileUtil.addAnswerToFile("id : "+id+ " ; Odpowiedzi : "+ clientAnswerMap.toString());
+            FileUtil.addResultToFile("id : "+id+ " ; Wynik  : "+ pointsCounter);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -82,9 +83,6 @@ public class ClientHandler implements Runnable {
 
     private String printAnswer() throws IOException {
         StringBuilder result = new StringBuilder();
-//        for(Object val : clientAnswerMap.entrySet().toArray()){
-//            if()
-//        }
         clientAnswerMap.forEach((key, value) -> result.append("Pytanie ").append(key).append(": ").append(value).append("\n"));
         result.append("Wynik :").append(pointsCounter).append(" p").append('\n');
         return result.toString();

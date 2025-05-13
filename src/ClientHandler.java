@@ -7,6 +7,7 @@ public class ClientHandler implements Runnable {
     private final Socket socket;
     private int currentQuestionIndex = 1;
     private final Map<Integer, String> clientAnswerMap = new HashMap<>();
+    private int pointsCounter = 0;
     private final int id;
 
     public ClientHandler(Socket socket, int id) {
@@ -37,27 +38,31 @@ public class ClientHandler implements Runnable {
                 String answer = in.readLine();
                 if (isEndMessage(answer)) {
                     sendMessage(out,"Kończysz test na żądanie !");
-                    saveAnswerToFile();
                     sendMessage(out,printAnswer());
                     sendMessage(out, "Kończę połączenie");
                     break;
                 }
 
                 clientAnswerMap.put(currentQuestionIndex, answer.trim());
+                checkAnswer(answer);
+
                 currentQuestionIndex++;
             }
-
-            saveAnswerToFile();
-
-        } catch (   IOException e) {
+        } catch (IOException e) {
             System.err.println("⚠️ Błąd w obsłudze klienta: " + e.getMessage());
         } finally {
+            saveAnswerToFile();
             close();
         }
     }
 
-    private void saveAnswerToFile() throws IOException {
-         FileUtil.addAnswerToFile("id : "+id+ "Odpowiedzi : "+ clientAnswerMap.toString());
+    private void saveAnswerToFile(){
+        try {
+            FileUtil.addAnswerToFile("id : "+id+ " ; Odpowiedzi : "+ clientAnswerMap.toString());
+            FileUtil.addResultToFile("id : "+id+ " ; Wynik  : "+ pointsCounter);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void sendMessage(BufferedWriter out, String message) throws IOException {
@@ -79,7 +84,14 @@ public class ClientHandler implements Runnable {
     private String printAnswer() throws IOException {
         StringBuilder result = new StringBuilder();
         clientAnswerMap.forEach((key, value) -> result.append("Pytanie ").append(key).append(": ").append(value).append("\n"));
+        result.append("Wynik :").append(pointsCounter).append(" p").append('\n');
         return result.toString();
+    }
+
+    void checkAnswer(String answer){
+        if(answer.trim().equalsIgnoreCase(QuestionHandler.getInstance().getQuestion(currentQuestionIndex).getCorrectAnswerText())){
+            pointsCounter++;
+        }
     }
 
 

@@ -2,10 +2,12 @@
 public class Question {
     private final String content;
     private final String correctAnswerKey;
+    private final String correctAnswerText;
 
-    public Question(String content,  String correctAnswerKey) {
+    public Question(String content, String correctAnswerKey, String correctAnswerText) {
         this.content = content.trim();
         this.correctAnswerKey = correctAnswerKey.trim().toUpperCase();
+        this.correctAnswerText = correctAnswerText;
     }
 
     public String getQuestionContent() {
@@ -17,13 +19,19 @@ public class Question {
     }
 
 
-    public boolean isAppropriateAnswer(String userAnswerKey) {
+    public boolean isAppropriateAnswerByKey(String userAnswerKey) {
         return correctAnswerKey.equalsIgnoreCase(userAnswerKey.trim());
     }
+     public boolean isAppropriateAnswerByText(String userAnswerKey) {
+        return correctAnswerText.equalsIgnoreCase(userAnswerKey.trim());
+    }
 
-
-    @Override
+    public String getCorrectAnswerText() {
+        return correctAnswerText;
+    }
+     @Override
     public String toString() {
-        return content + "\nCorrect: " + correctAnswerKey;
+        return "Pytanie: " + content + "\n" +
+               "Poprawna odpowiedź: " + correctAnswerKey + ") " + correctAnswerText;
     }
 }

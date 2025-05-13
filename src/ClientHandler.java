@@ -7,6 +7,7 @@ public class ClientHandler implements Runnable {
     private final Socket socket;
     private int currentQuestionIndex = 1;
     private final Map<Integer, String> clientAnswerMap = new HashMap<>();
+    private int pointsCounter = 0;
     private final int id;
 
     public ClientHandler(Socket socket, int id) {
@@ -43,6 +44,8 @@ public class ClientHandler implements Runnable {
                 }
 
                 clientAnswerMap.put(currentQuestionIndex, answer.trim());
+                checkAnswer(answer);
+
                 currentQuestionIndex++;
             }
         } catch (IOException e) {
@@ -79,8 +82,18 @@ public class ClientHandler implements Runnable {
 
     private String printAnswer() throws IOException {
         StringBuilder result = new StringBuilder();
+//        for(Object val : clientAnswerMap.entrySet().toArray()){
+//            if()
+//        }
         clientAnswerMap.forEach((key, value) -> result.append("Pytanie ").append(key).append(": ").append(value).append("\n"));
+        result.append("Wynik :").append(pointsCounter).append(" p").append('\n');
         return result.toString();
+    }
+
+    void checkAnswer(String answer){
+        if(answer.trim().equalsIgnoreCase(QuestionHandler.getInstance().getQuestion(currentQuestionIndex).getCorrectAnswerText())){
+            pointsCounter++;
+        }
     }
 
 

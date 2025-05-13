@@ -136,3 +136,5 @@ id : 548Odpowiedzi : {1=, 2=a, 3=tyt, 4=yt}
 id : 548Odpowiedzi : {1=, 2=a, 3=tyt, 4=yt}
 id : 552Odpowiedzi : {1=hfghfghfghfghfghfghgfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, 2=new, 3=dfsd, 4=return, 5=void}
 id : 554 ; Odpowiedzi : {1=extends, 2=new, 3=implements, 4=void, 5=break, 6=catch, 7=throw, 8=final, 9=, 10=Runnable, 11=synchronized, 12=main, 13=char, 14=boolean, 15=if, 16=switch, 17=public, 18=static, 19=class, 20=return}
+id : 556 ; Odpowiedzi : {1=extends, 2=a, 3=d, 4=d, 5=f, 6=g, 7=h, 8=j, 9=f, 10=s, 11=d, 12=fd, 13=, 14=sds, 15=ds, 16=, 17=sds, 18=d, 19=s, 20=sd}
+id : 557 ; Odpowiedzi : {1=extends, 2=new, 3=implements}

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -26,33 +27,46 @@ public class QuestionHandler {
         String[] lines = questionsRaw.split("\n");
 
         StringBuilder questionContent = new StringBuilder();
+        Map<String, String> options = new HashMap<>();
         String correctAnswerKey = null;
         int questionIndex = 0;
 
         for (String line : lines) {
             line = line.trim();
 
-            // Pusta linia = koniec jednego pytania
             if (line.isEmpty()) {
                 continue;
             }
 
-            // Jeśli linia to np. "{C}" – oznacza odpowiedź do poprzedniego pytania
             if (line.matches("^\\{[A-Da-d]}$")) {
                 correctAnswerKey = line.substring(1, 2).toUpperCase();
 
                 if (questionContent.length() > 0 && correctAnswerKey != null) {
                     String finalContent = questionContent.toString().trim();
-                    Question q = new Question(finalContent, correctAnswerKey);
+                    String correctAnswerText = options.get(correctAnswerKey);
+
+                    if (correctAnswerText == null) {
+                        throw new IllegalArgumentException("Brak odpowiedzi dla klucza: " + correctAnswerKey);
+                    }
+
+                    Question q = new Question(finalContent, correctAnswerKey, correctAnswerText);
                     questionsMap.put(++questionIndex, q);
 
-                    // Resetujemy dane na kolejne pytanie
+                    // Reset na kolejne pytanie
                     questionContent.setLength(0);
+                    options.clear();
                     correctAnswerKey = null;
                 }
 
+            } else if (line.matches("^[A-Da-d]\\)\\s+.*$")) {
+                String optionKey = line.substring(0, 1).toUpperCase();
+                String optionText = line.substring(2).trim();
+                options.put(optionKey, optionText);
+
+                // Dodajemy do treści pytania (bo chcesz, by content = pytanie + odpowiedzi)
+                questionContent.append("\n").append(line);
             } else {
-                // Dodajemy kolejną linię pytania
+                // Treść pytania (pierwsza linia)
                 if (questionContent.length() > 0) {
                     questionContent.append("\n");
                 }
@@ -60,7 +74,6 @@ public class QuestionHandler {
             }
         }
     }
-
 
     public Map<Integer, Question> getQuestionsMap() {
         return questionsMap;

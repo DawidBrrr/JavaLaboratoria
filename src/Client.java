@@ -53,15 +53,28 @@ public class Client {
     }
 
     private String readUserAnswer(Scanner scanner) {
-        long start = System.currentTimeMillis();
-        String answer;
         System.out.print("Twoja odpowiedź: ");
-        answer = scanner.nextLine().trim().toUpperCase();
-        long duration = System.currentTimeMillis() - start;
+        String answer = "";
+        long startTime = System.currentTimeMillis();
 
-        if (duration > 30000) {
-            System.out.println("⏱️ Przekroczono limit czasu 30s. Brak odpowiedzi.");
-            return "";
+        while (System.currentTimeMillis() - startTime < 30000) {
+            try {
+                if (System.in.available() > 0) {
+                    answer = scanner.nextLine().trim().toUpperCase();
+                    break;
+                }
+                Thread.sleep(100);
+            } catch (IOException e) {
+                System.err.println("❌ Błąd odczytu: " + e.getMessage());
+                break;
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+
+        if (answer.isEmpty() && (System.currentTimeMillis() - startTime >= 30000)) {
+            System.out.println("\n⏱️ Przekroczono limit czasu 30s. Brak odpowiedzi.");
         }
 
         return answer;
